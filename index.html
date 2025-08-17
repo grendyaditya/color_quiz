@@ -3,30 +3,63 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Color Guess Quiz</title>
+  <title>Color Quiz Edu</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Inter', sans-serif; }
   </style>
 </head>
-<body class="bg-gray-900 text-white flex items-center justify-center min-h-screen p-4">
-  <div class="bg-gray-800 p-8 rounded-xl shadow-lg w-full max-w-md text-center space-y-6">
-    <h1 class="text-3xl font-bold">Color Guess Quiz</h1>
+<body class="bg-gradient-to-br from-cyan-100 via-green-100 to-yellow-100 min-h-screen flex flex-col">
 
-    <div id="targetColor" class="text-xl font-semibold">RGB(?, ?, ?)</div>
+  <!-- Main Content -->
+  <div class="flex-1 flex flex-col lg:flex-row gap-6 w-full max-w-6xl mx-auto p-6">
 
-    <div id="colorOptions" class="grid grid-cols-2 gap-4">
-      <!-- Kotak warna akan di-generate di sini -->
+    <!-- Left: Quiz + Tips -->
+    <div class="flex-1 bg-white p-6 rounded-2xl shadow-lg flex flex-col space-y-4 max-h-screen">
+      <h1 class="text-3xl font-bold text-center text-gray-800">Color Guess Quiz</h1>
+      <div class="text-center text-xl font-semibold text-gray-700" id="targetColor">RGB(?, ?, ?)</div>
+      <div id="colorOptions" class="grid grid-cols-2 gap-3 flex-shrink-0"></div>
+      <div id="feedback" class="text-lg font-medium text-center mt-2"></div>
+      <div id="paletteTips" class="mt-2 space-y-2 overflow-y-auto flex-1"></div>
+      <button id="nextBtn" class="w-full py-2 bg-cyan-400 hover:bg-cyan-500 text-white transition rounded-xl font-medium mt-2">
+        Next
+      </button>
     </div>
 
-    <div id="feedback" class="text-lg font-medium mt-2"></div>
-    <div id="paletteTip" class="text-sm mt-1 text-gray-300"></div>
+    <!-- Right: RGB Playground -->
+    <div class="flex-1 bg-white p-6 rounded-2xl shadow-lg flex flex-col space-y-4 max-h-screen">
+      <h2 class="text-2xl font-bold text-center text-gray-800">RGB Playground</h2>
+      <div class="flex items-center justify-center">
+        <div id="playgroundBox" class="w-48 h-48 rounded-xl border border-gray-300 shadow-inner flex-shrink-0"></div>
+      </div>
+      <div class="grid grid-cols-3 gap-3">
+        <div class="space-y-1">
+          <label for="rRange" class="text-sm text-gray-700">R</label>
+          <input id="rRange" type="range" min="0" max="255" value="128" class="w-full accent-red-400">
+          <div id="rValue" class="text-center text-sm text-gray-600">128</div>
+        </div>
+        <div class="space-y-1">
+          <label for="gRange" class="text-sm text-gray-700">G</label>
+          <input id="gRange" type="range" min="0" max="255" value="128" class="w-full accent-green-400">
+          <div id="gValue" class="text-center text-sm text-gray-600">128</div>
+        </div>
+        <div class="space-y-1">
+          <label for="bRange" class="text-sm text-gray-700">B</label>
+          <input id="bRange" type="range" min="0" max="255" value="128" class="w-full accent-blue-400">
+          <div id="bValue" class="text-center text-sm text-gray-600">128</div>
+        </div>
+      </div>
+      <div class="text-center mt-1 text-sm text-gray-600">RGB Code: <span id="rgbCode">rgb(128, 128, 128)</span></div>
+    </div>
 
-    <button id="nextBtn" class="w-full py-2 bg-blue-600 hover:bg-blue-700 transition rounded-md font-medium mt-4">
-      Next
-    </button>
   </div>
+
+  <!-- Footer -->
+  <footer class="w-full py-3 text-center bg-white text-gray-500 text-sm flex-shrink-0 rounded-t-xl shadow-inner">
+    &copy; 2025 Grendy Aditya Pangestu | Color Quiz Edu
+  </footer>
+
 
   <script src="script.js"></script>
 </body>
